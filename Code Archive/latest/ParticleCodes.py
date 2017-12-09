@@ -1,52 +1,44 @@
 #### PDG PARTICLE CODES
-####
-#### This module contains integer constants which hold the PDG codes for particles. Not all particles 
-#### are included. It also contains functions to evaluate whether a particle with a given PDG code
-#### belongs to a group of particles like the leptons or quarks.
+
+class Particle(object):
+    def __init__(self, code=0, key="", name=""):
+        self.code = code
+        self.key = key
+        self.name = name
+
+    def __str__(self):
+        return "{0} ({1})".format(self.name, self.code)
 
 
+class ParticleCodesReader(object):
+    def __init__(self, particle_codes_file="particle_codes.txt"):
+        self.particle_codes_file = particle_codes_file
 
+    def get_particles_from_file(self):
+        with open(self.particle_codes_file, "r") as f:
+            lines = f.readlines()
+            particles = self.get_particles_from_lines(lines)
 
-Collection = {}
+            return particles
+
+    def get_particles_from_lines(self, lines):
+        return [self.get_particle_from_line(l) for l in lines]
+
+    def get_particle_from_line(self, line):
+        parts = line.split(",")
+
+        particle = Particle()
+        particle.code = parts[0].strip()
+        particle.key = parts[1].strip()
+        particle.name = parts[2].strip()
+
+        return particle
+
 
 QuarkCollection = {}
 LeptonCollection = {}
 
 NeutrinoCollection = {}
-
-Collection["DownQuark"] = DownQuark
-Collection["UpQuark"] = UpQuark
-Collection["StrangeQuark"] = StrangeQuark
-Collection["CharmQuark"] = CharmQuark
-Collection["BottomQuark"] = BottomQuark
-Collection["TopQuark"] = TopQuark
-Collection["Photon"] = Photon
-Collection["ZZero"] = ZZero
-Collection["WPlus"] = WPlus
-Collection["WMinus"] = WMinus
-Collection["Electron"] = Electron
-Collection["AntiElectron"] = AntiElectron
-Collection["ElectronNeutrino"] = ElectronNeutrino
-Collection["ElectronAntiNeutrino"] = ElectronAntiNeutrino
-Collection["MuLepton"] = MuLepton
-Collection["AntiMuLepton"] = AntiMuLepton
-Collection["MuNeutrino"] = MuNeutrino
-Collection["MuAntiNeutrino"] = MuAntiNeutrino
-Collection["TauLepton"] = TauLepton
-Collection["AntiTauLepton"] = AntiTauLepton
-Collection["TauNeutrino"] = TauNeutrino
-Collection["TauAntiNeutrino"] = TauAntiNeutrino
-Collection["Pi00Meson"] = Pi00Meson
-Collection["Pi0Meson"] = Pi0Meson
-Collection["Pi1Meson"] = Pi1Meson
-Collection["Neutron"] = Neutron
-Collection["Proton"] = Proton
-Collection["Delta00Baryon"] = Delta00Baryon
-Collection["Delta0Baryon"] = Delta0Baryon
-Collection["Delta1Baryon"] = Delta1Baryon
-Collection["Delta2Baryon"] = Delta2Baryon
-Collection["K1Meson"] = K1Meson
-Collection["K1AntiMeson"] = K1AntiMeson
 
 QuarkCollection["DownQuark"] = DownQuark
 QuarkCollection["UpQuark"] = UpQuark
@@ -75,62 +67,32 @@ NeutrinoCollection["MuAntiNeutrino"] = MuAntiNeutrino
 NeutrinoCollection["TauNeutrino"] = TauNeutrino
 NeutrinoCollection["TauAntiNeutrino"] = TauAntiNeutrino
 
-def IsQuark(Code):
-	
-	Response = False
-	
-	for Code1 in QuarkCollection:
-		if (Code1 == Code):
-			Response = True
-	
-	return Response
 
-	
+def IsQuark(Code):
+    Response = False
+
+    for Code1 in QuarkCollection:
+        if (Code1 == Code):
+            Response = True
+
+    return Response
+
+
 def IsLepton(Code):
-	
-	Response = False
-	
-	for Code1 in LeptonCollection:
-		if (Code1 == Code):
-			Response = True
-	
-	return Response
+    Response = False
+
+    for Code1 in LeptonCollection:
+        if (Code1 == Code):
+            Response = True
+
+    return Response
 
 
 def IsNeutrino(Code):
-	
-	Response = False
-	
-	for Code1 in NeutrinoCollection:
-		if (Code1 == Code):
-			Response = True
-	
-	return Response
+    Response = False
 
+    for Code1 in NeutrinoCollection:
+        if (Code1 == Code):
+            Response = True
 
-Names = {}
-
-
-def ParticleName(Code):
-	
-	Name = "Unreferenced"
-	
-	if Code in Names.keys():
-		Name = Names[Code]
-	
-	"""
-	for Key1, Code1 in Collection.iteritems():
-		if (Code == Code1):
-			Name = Key1
-	"""	
-	return Name
-
-
-ParticleDictionary = {}
-
-for Variable in dir():
-
-	if (isinstance(eval(Variable), int)):
-		ParticleDictionary[eval(Variable)] = Variable
-	
-
+    return Response
