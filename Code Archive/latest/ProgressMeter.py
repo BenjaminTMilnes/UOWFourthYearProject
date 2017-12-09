@@ -1,9 +1,3 @@
-# Progress Meter
-#
-# Modified 2013.01.16 22:50
-# Last Modified 2013.01.16 23:16
-#
-
 import math
 
 class ProgressMeter:
