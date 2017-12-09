@@ -1,60 +1,11 @@
-########################################################################################################################
-####
 #### PDG PARTICLE CODES
 ####
 #### This module contains integer constants which hold the PDG codes for particles. Not all particles 
 #### are included. It also contains functions to evaluate whether a particle with a given PDG code
 #### belongs to a group of particles like the leptons or quarks.
-####
-#### Modified 2012.11.21
-#### Modified 2013.01.13 19:44
-#### Modified 2013.02.12 13:40
-#### Modified 2013.02.13 10:52
-####
-########################################################################################################################
 
-DownQuark = 1
-UpQuark = 2
-StrangeQuark = 3
-CharmQuark = 4
-BottomQuark = 5
-TopQuark = 6
 
-Photon = 22
 
-ZZero = 23
-WPlus = 24
-WMinus = -24
-
-Electron = 11
-AntiElectron = -11
-ElectronNeutrino = 12
-ElectronAntiNeutrino = -12
-
-MuLepton = 13
-AntiMuLepton = -13
-MuNeutrino = 14
-MuAntiNeutrino = -14
-
-TauLepton = 15
-AntiTauLepton = -15
-TauNeutrino = 16
-TauAntiNeutrino = -16
-
-Pi00Meson = -211 # Where 00 corresponds to a charge of -1.
-Pi0Meson = 111
-Pi1Meson = 211
-
-Neutron = 2112
-Proton = 2212
-
-Delta00Baryon = 1114 # Where 00 corresponds to a charge of -1.
-Delta0Baryon = 2114
-Delta1Baryon = 2214
-Delta2Baryon = 2224
-
-K1Meson = 321
-K1AntiMeson = -321
 
 Collection = {}
 
@@ -159,39 +110,6 @@ def IsNeutrino(Code):
 
 Names = {}
 
-Names[DownQuark] = "Down Quark"
-Names[UpQuark] = "Up Quark"
-Names[StrangeQuark] = "Strange Quark"
-Names[CharmQuark] = "Charm Quark"
-Names[BottomQuark] = "Bottom Quark"
-Names[TopQuark] = "Top Quark"
-Names[Photon] = "Photon"
-Names[ZZero] = "Z 0"
-Names[WPlus] = "W +1"
-Names[WMinus] = "W -1"
-Names[Electron] = "Electron"
-Names[AntiElectron] = "Antielectron"
-Names[ElectronNeutrino] = "Electron Neutrino"
-Names[ElectronAntiNeutrino] = "Electron Antineutrino"
-Names[MuLepton] = "Mu Lepton"
-Names[AntiMuLepton] = "Mu Antilepton"
-Names[MuNeutrino] = "Mu Neutrino"
-Names[MuAntiNeutrino] = "Mu Antineutrino"
-Names[TauLepton] = "Tau Lepton"
-Names[AntiTauLepton] = "Tau Antilepton"
-Names[TauNeutrino] = "Tau Neutrino"
-Names[TauAntiNeutrino] = "Tau Antineutrino"
-Names[Pi00Meson] = "Pi -1 Meson"
-Names[Pi0Meson] = "Pi 0 Meson"
-Names[Pi1Meson] = "Pi +1 Meson"
-Names[Neutron] = "Neutron"
-Names[Proton] = "Proton"
-Names[Delta00Baryon] = "Delta -1 Baryon"
-Names[Delta0Baryon] = "Delta 0 Baryon"
-Names[Delta1Baryon] = "Delta +1 Baryon"
-Names[Delta2Baryon] = "Delta +2 Baryon"
-Names[K1Meson] = "K +1 Meson"
-Names[K1AntiMeson] = "K -1 Antimeson"
 
 def ParticleName(Code):
 	
